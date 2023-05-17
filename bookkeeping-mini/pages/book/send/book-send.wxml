@@ -1,0 +1,22 @@
+<view class="content">
+  <view class="tab">
+    <view class="tabs">
+      <view class="book-info-avatar">
+        <image mode="scaleToFill" catchtap="onPreviewImage" data-url="{{bookAvatar}}" src="{{bookAvatar==null||bookAvatar==''?'/static/img/default.png':bookAvatar}}" />
+      </view>
+      {{bookInfo.bookName}}
+    </view>
+    <!-- 表单 -->
+    <form bindsubmit="formSubmit">
+      <view class="from">
+        <view class="list">
+          <view class="item">
+            <view class="item_name">备注</view>
+            <input class="item_input" type="text" placeholder="请填写备注" name="bookName" />
+          </view>
+        </view>
+      </view>
+      <button class="sure" form-type="submit">确定</button>
+    </form>
+  </view>
+</view>

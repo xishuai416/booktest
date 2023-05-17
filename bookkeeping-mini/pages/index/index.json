@@ -1,0 +1,19 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mp-icon": "../../miniprogram_npm/weui-miniprogram/icon/icon",
+    "mp-actionSheet": "../../miniprogram_npm/weui-miniprogram/actionsheet/actionsheet",
+    "mp-dialog": "../../miniprogram_npm/weui-miniprogram/dialog/dialog",
+    "mp-checkbox-group": "../../miniprogram_npm/weui-miniprogram/checkbox-group/checkbox-group",
+    "mp-checkbox": "../../miniprogram_npm/weui-miniprogram/checkbox/checkbox",
+    "mp-cells": "../../miniprogram_npm/weui-miniprogram/cells/cells",
+    "mp-half-screen-dialog": "../../miniprogram_npm/weui-miniprogram/half-screen-dialog/half-screen-dialog",
+    "van-search": "../../component/dist/search/index"
+  },
+  "navigationBarBackgroundColor": "#FFD700",
+  "navigationBarTitleText": "账本首页",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "backgroundColor": "#FFD700"
+
+}

@@ -1,0 +1,32 @@
+<view>
+  <view wx:if="{{userList&&userList.length!=0}}">
+
+    <van-cell bindtap="onViewBook" wx:for="{{userList}}" data-value="{{item}}">
+      <view slot="title">
+        {{item.userName?item.userName:item.reallyName}}
+        <view> {{item.bookName}} </view>
+        <view style="font-size: 25rpx;  color: gray;">
+          申请时间 {{item.createTime}}
+        </view>
+        <view style="font-size: 25rpx;  color: gray;" wx:if="{{item.remark}}">
+          备注: {{item.remark}}
+        </view>
+      </view>
+      <view slot="icon" class="book-info-avatar">
+        <image style="padding: 0 5rpx 0 0;" mode="scaleToFill" catchtap="onPreviewImage" data-url="{{item.avatarUrl}}" src="{{item.avatarUrl==null||item.avatarUrl==''?'/static/img/default.png':item.avatarUrl}}" />
+      </view>
+      <!-- <button slot="right-icon" class="mini-btn" type="default" size="mini">申请</button> -->
+      <view slot="right-icon" name="add">
+        <view wx:if="{{item.auditStatus==0}}">
+          <button style="width: 4rem !important;" type="default" size="mini" data-value="{{item}}" catchtap="bindAgree">同意</button>
+          <button style="width: 4rem !important;" type="warn" size="mini" data-value="{{item}}" catchtap="bindReject">拒绝</button>
+        </view>
+        <view wx:else>
+          <text wx:if="{{item.auditStatus==1}}">已同意</text>
+          <text wx:else>已拒绝</text>
+        </view>
+      </view>
+    </van-cell>
+  </view>
+  <create-book wx:else inner-text="没有要审核的数据啦~~"></create-book>
+</view>

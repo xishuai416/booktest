@@ -1,0 +1,25 @@
+<!--pages/search/search.wxml-->
+<view>
+  <import src="/component/wxSearch/wxSearch"></import>
+  <template is="wxSearch" data="{{...tabData}}" bind:bindSearchSchool="bindGoSchool"></template>
+  <view wx:if="{{bookList.length!=0&&tabData.searchIsHidden}}">
+    <van-cell bindtap="onViewBook" wx:for="{{bookList}}" data-value="{{item}}">
+      <view slot="title">
+        {{item.bookName}}
+        <view style="font-size: 25rpx; margin-left: 25rpx; color: gray;">
+          创建于 {{item.createTime}}
+        </view>
+      </view>
+      <view slot="icon" class="book-info-avatar">
+        <image mode="scaleToFill" catchtap="onPreviewImage" data-url="{{item.bookAvatar}}" src="{{item.bookAvatar==null||item.bookAvatar==''?'/static/img/default.png':item.bookAvatar}}" />
+      </view>
+      <!-- <button slot="right-icon" class="mini-btn" type="default" size="mini">申请</button> -->
+      <view slot="right-icon" name="add">
+        <button style="width: 4rem !important;"  bindtap="" type="default" size="mini">详情</button>
+      
+      </view>
+    </van-cell>
+  </view>
+  <create-book wx:if="{{bookList.length==0&&tabData.searchIsHidden}}" inner-text="暂无数据"></create-book>
+
+</view>

@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-datetime-picker": "../dist/datetime-picker/index",
+    "van-popup": "../dist/popup/index",
+    "van-action-sheet": "../dist/action-sheet/index",
+    "mp-icon":"../../miniprogram_npm/weui-miniprogram/icon/icon",
+    "picker":"../picker/picker"
+  }
+}

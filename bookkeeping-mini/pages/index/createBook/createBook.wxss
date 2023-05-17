@@ -1,0 +1,16 @@
+/* pages/index/createBook/createBook.wxss */
+.create-book {
+    text-align: center;
+
+}
+
+button {
+    background-color: #FFD700;
+    width: 14rem !important;
+ 
+}
+.empty-text {
+    margin-bottom: 4px;
+    font-size: 13px;
+    color: gray;
+}

@@ -1,0 +1,249 @@
+/**index.wxss**/
+page {
+    background: #f5f5f5;
+    font-size: 28rpx;
+  }
+  
+  .tab {
+    background: linear-gradient(180deg, #FFD700 0%, #e6d579 100%);
+    border-bottom-right-radius: 4em 0.5em;
+    border-bottom-left-radius: 1em 3em;
+    height: 250rpx;
+    width: 100%;
+  }
+  
+  .list {
+    background: #fff;
+    border-radius: 20rpx;
+    padding: 20rpx;
+  }
+  
+  .from {
+    padding: 0 20rpx;
+    padding-top: 44rpx;
+  }
+  
+  .item {
+    display: flex;
+    align-items: center;
+    height: 80rpx;
+  }
+  
+  .item_input {
+    border-bottom: 1px solid #f5f5f5;
+    flex: 1;
+    height: 78rpx;
+    font-size: 28rpx;
+  }
+  
+  .item_name {
+    width: 220rpx;
+  }
+  
+  .list .item:first-child {
+    border: 0;
+  }
+  
+  .code_btn {
+    width: 120rpx;
+    background: linear-gradient(180deg, #4ed1f9 0%, #35aefa 100%);
+    height: 48rpx;
+    border-radius: 60rpx;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24rpx;
+    box-shadow: 0px 3px 5px #f5f5f5;
+  }
+  
+  .jinru {
+    width: 15rpx;
+    height: 28rpx;
+  }
+  
+  .picker {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  /* 新建账单按钮 */
+  .sure {
+    width: 460rpx;
+    height: 70rpx;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #FFD700 0%, #FFD700 100%);
+    margin-top: 100rpx;
+    color: black;
+    border-radius: 60rpx;
+    margin-bottom: 50rpx;
+  
+  }
+  
+  .tabs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 60rpx;
+    font-size: 36rpx;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .tabList {}
+  
+  .tabItem {
+    display: flex;
+  }
+  
+  .line {
+    color: #fff;
+    font-weight: bold;
+    width: 120rpx;
+    text-align: center;
+  }
+  
+  .tw {
+    width: 90rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .tabId {
+    width: 50rpx;
+    height: 50rpx;
+    background: rgba(255, 255, 255, 0.842);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    /* margin: 0 20rpx; */
+    color: #4ed1f9;
+  }
+  
+  .tabText {
+    color: #fff;
+    margin-top: 10rpx;
+    font-size: 20rpx;
+    width: 90rpx;
+    text-align: center;
+  }
+  
+  .on {
+    background: #fff;
+    color: #35aefa;
+  }
+  
+  .upload {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  
+  .del {
+    position: absolute;
+    width: 30rpx;
+    height: 30rpx;
+    border-radius: 50%;
+    top: -15rpx;
+    right: -15rpx;
+  }
+  
+  .del image {
+    width: 30rpx !important;
+    height: 30rpx !important;
+    z-index: 1;
+    border-radius: 50%;
+  }
+  .up-image {
+    width: 60rpx;
+    height: 60rpx;
+  
+  }
+  .up-image image {
+    height: 60rpx;
+    width: 60rpx;
+  }
+  
+  .imageList image {
+    width: 60rpx;
+    height: 60rpx;
+  }
+  
+  .imageList {
+    width: 60rpx;
+    height: 60rpx;
+    position: relative;
+  }
+  .see{
+    color: #35aefa;
+  }
+  
+  
+  
+  
+  
+  /* 模态窗 */
+  .cu-modal {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1110;
+      opacity: 0;
+      outline: 0;
+      text-align: center;
+      -ms-transform: scale(1.185);
+      transform: scale(1.185);
+      backface-visibility: hidden;
+      perspective: 2000rpx;
+      background: rgba(0, 0, 0, 0.6);
+      transition: all 0.3s ease-in-out 0s;
+      pointer-events: none;
+  }
+  
+  .cu-modal::before {
+      content: "\200B";
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+  }
+  
+  .cu-modal.show {
+      opacity: 1;
+      transition-duration: 0.3s;
+      -ms-transform: scale(1);
+      transform: scale(1);
+      overflow-x: hidden;
+      overflow-y: auto;
+      pointer-events: auto;
+  }
+  .popup{
+    position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: auto;
+      margin-right: auto;
+      width: 680rpx;
+      max-width: 100%;
+      background-color: #f8f8f8;
+      border-radius: 10rpx;
+    overflow: hidden;
+    padding: 30rpx 0;
+  }
+
+
+
+
+  
+/* 注：xxx  的提示语 */
+.input-waring {
+  font-size: 25rpx;
+  color: red;
+}

@@ -1,0 +1,49 @@
+.list {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+}
+
+.from {
+  padding: 0 20rpx;
+  padding-top: 44rpx;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  height: 80rpx;
+}
+
+.item-noheight {
+  display: flex;
+  align-items: center;
+
+}
+
+
+.item_input {
+  border-bottom: 1px solid #f5f5f5;
+  flex: 1;
+  height: 78rpx;
+  font-size: 28rpx;
+}
+
+.item_name {
+  width: 220rpx;
+}
+
+.list .item:first-child {
+  border: 0;
+}
+
+
+.category-item-img-template {
+  width: 10vw;
+  height: 10vw;
+}
+
+.category-item-img {
+  width: 20vw;
+  height: 20vw;
+}

@@ -1,0 +1,10 @@
+<!--component/button-group/button-group.wxml-->
+<view class="btn-group-wrap">
+  <view wx:for="{{dataList}}" wx:for-item="item" wx:for-index="index" :key="index" class="btn-item {{currentId===item.id ? 'select' : ''}} {{dataList.length===1?'only-btn':''}}" data-id="{{item.id}}" bindtap="switchBtn">
+    <!-- 如果需要的话也可加icon -->
+    <!-- <icon type="success" class="icon-test" size="20"/> -->
+    <!-- <text wx:if="{{item.icon}}" class="iconfont icon-{{item.icon}}"></text> -->
+    <text wx:if="{{item.text}}" class="btn-text">{{labelKey?item[labelKey]:item.text}}</text>
+    <text wx:if="{{!item.text}}" class="btn-text">按钮{{index+1}}</text>
+  </view>
+</view>

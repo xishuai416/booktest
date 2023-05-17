@@ -1,0 +1,22 @@
+<!-- 表单 -->
+<form bindsubmit="formSubmit">
+  <view class="from">
+    <view class="list">
+      <view class="item">
+        <view class="item_name">分类名称</view>
+        <input class="item_input" type="text" placeholder="请填写分类名称" name="name" />
+      </view>
+      <view class="item-noheight">
+        <view class="item_name">图标上传</view>
+        <image class="category-item-img" mode='widtFix' wx:if="{{icon}}" src="{{icon}}"></image>
+        <image class="category-item-img-template" bindtap="onRemoveImage" mode='widtFix' wx:if="{{icon}}" src="https://andwky.top:9000/category/remove.png"></image>
+        <image class="category-item-img-template" bindtap="onUploadImage" mode='widtFix' wx:if="{{!icon}}" src="https://andwky.top:9000/category/add.png"></image>
+      </view>
+    </view>
+  </view>
+  <button class="sure" form-type="submit">确定</button>
+  <!--  模板 -->
+  <view class="icon-template">
+
+  </view>
+</form>

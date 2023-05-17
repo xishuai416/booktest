@@ -1,0 +1,9 @@
+{
+  "usingComponents": {   
+    "mp-icon": "../../miniprogram_npm/weui-miniprogram/icon/icon",
+    "van-cell-group": "../../component/dist/cell-group/index",
+    "van-cell": "../../component/dist/cell/index"
+  },
+  "navigationBarBackgroundColor": "#FFD700",
+  "navigationBarTitleText": "我的申请"
+}

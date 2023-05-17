@@ -1,0 +1,77 @@
+<!--pages/book/book.wxml-->
+<view class="app">
+  <view class="back-radius"></view>
+  <view class="card book-info" bindtap="onBookView">
+    <view class="book-info-avatar">
+      <image mode="scaleToFill" catchtap="onPreviewImage" data-url="{{bookAvatar}}" src="{{bookAvatar==null||bookAvatar==''?'/static/img/default.png':bookAvatar}}" />
+    </view>
+    <view class="book-info-name">{{bookName}} </view>
+    <view class="book-info-icon">
+      <mp-icon type="outline" icon="arrow" color="gray" size="{{10}}"></mp-icon>
+    </view>
+    <view class="book-user-images">
+      <image wx:for="{{bookUser}}" wx:if="{{index<12}}" catchtap="onPreviewImage" data-url="{{item.avatarUrl}}" style="{{'right:'+(index+1)*3+'vh'+';z-index:'+(index+1)*3}}" class="book-user-images-url" mode="scaleToFill" src="{{item.avatarUrl}}" />
+    </view>
+  </view>
+  <view class="book-user-info" wx:for="{{bookUser}}" wx:key="{{index}}" data-data="{{item}}" data-userid="{{item.userId}}" data-auth="{{item.auth}}" bindtap="onUserView" bindlongpress="longpressBookUser">
+    <image class="book-user-info-image" catchtap="onPreviewImage" data-url="{{item.avatarUrl}}" mode="scaleToFill" src="{{item.avatarUrl}}" />
+    <view class="book-user-info-text"> {{item.userName!=null&&item.userName!=''?item.userName:item.reallyName}}</view>
+    <view class="book-user-info-icon">
+      <view class="book-user-info-r book-user-info-root" wx:if="{{item.auth==2}}">创建人</view>
+      <view class="book-user-info-r book-user-info-role" wx:if="{{item.auth==1}}">管理员</view>
+      <view class="book-user-info-r book-user-info-user" wx:if="{{item.auth==0}}">成员</view>
+      <mp-icon type="outline" icon="arrow" color="gray" size="{{10}}"></mp-icon>
+    </view>
+  </view>
+  <view class="adaptation_buttom"></view>
+  <button type="primary" class="book-share" open-type="share" wx:if="{{invitation}}">邀请好友加入</button>
+  <button type="primary" class="book-share" catchtap="bookSend" wx:else>申请加入</button>
+
+  <!--本编辑弹出框 -->
+  <drawer id="bookDrawer" title="编辑账本" identifying="book" bind:submit="submit">
+    <view class="top grid">
+      <label class="title col-0">账本头像:</label>
+      <image mode="scaleToFill" style="width: 7vh; height: 7vh; border-radius: 50%; border: 1px solid #FFD700;" bindtap="uploads" data-identifying="book" src="{{bookAvatar==null||bookAvatar==''?'/static/img/default.png':bookAvatar}}" />
+    </view>
+    <view class="top grid">
+      <label class="title col-0">账本名称:</label>
+      <input class="input_base input_h40 col-1" name="bookName" placeholder="请输入账本名称" model:value="{{bookName}}"></input>
+    </view>
+    <view class="top grid">
+      <label class="title col-0">邀请验证:</label>
+      <switch checked="{{bookData.userAudit==1?true:false}}" bindchange="userAuditChange" /><text class="input-waring">注:成员加入需管理员审核</text>
+      <!-- <input class="input_base input_h40 col-1" name="bookName" placeholder="请输入账本名称" model:value="{{bookName}}"></input> -->
+    </view>
+    <view class="top grid">
+      <label class="title col-0">私密账本:</label>
+      <switch checked="{{bookData.showSearch==0?true:false}}" bindchange="showSearchChange" /><text class="input-waring">注:是否为私密账本</text>
+    </view>
+  </drawer>
+
+
+
+  <!--用户编辑弹出框 -->
+  <drawer id="userDrawer" title="编辑用户" identifying="user" bind:submit="submit">
+    <view class="top grid">
+      <label class="title col-0">用户头像:</label>
+      <image mode="scaleToFill" style="width: 7vh; height: 7vh; border-radius: 50%;border: 1px solid #FFD700;" bindtap="uploads" data-identifying="user" src="{{userData.avatarUrl==null||userData.avatarUrl==''?'/static/img/default.png':userData.avatarUrl}}" />
+    </view>
+    <view class="top grid">
+      <label class="title col-0">用户名称:</label>
+      <input class="input_base input_h40 col-1" name="userName" placeholder="请输入用户名称" model:value="{{userName}}"></input>
+    </view>
+  </drawer>
+
+  <!-- 账本选择弹出组件 -->
+  <page-container show="{{show}}" round="{{round}}" overlay="{{overlay}}" duration="{{duration}}" position="{{position}}" close-on-slide-down="{{false}}" overlay-style="{{overlayStyle}}">
+    <view>
+      <view class="money-common money-success" wx:if="{{auth==0}}" bindtap="setUserAdmin">设置为管理员</view>
+      <view class="money-common money-delete" wx:if="{{auth==1&&bookUserId!=nowId}}" bindtap="deleteUserAdmin">移除管理员</view>
+      <view class="money-common money-delete" wx:if="{{bookUserId!=now.id}}" bindtap="bookUserDelete">移出账本</view>
+      <view class="money-common money-delete" wx:if="{{bookUserId==now.id&&auth==2}}" bindtap="deleteBook">解散账本</view>
+      <view class="money-common money-delete" wx:if="{{bookUserId==now.id&&auth!=2}}" bindtap="signOutBook">退出账本</view>
+      <view class="money-common money-return" bindtap="containerClose">取消</view>
+    </view>
+
+  </page-container>
+</view>

@@ -1,0 +1,18 @@
+.book-info-avatar {
+  padding: 0px 1vh 0 0;
+}
+
+/* 用户头像 */
+.book-info-avatar image {
+  width: 7vh;
+  height: 7vh;
+  float: left;
+  border-radius: 50%;
+}
+
+/* 用户名称 */
+.book-info-name {
+  margin: 3vh 0vh 0vh 3vh;
+  font-size: 35rpx;
+  display: inline-block;
+}

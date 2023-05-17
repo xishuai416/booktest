@@ -1,0 +1,27 @@
+<view class="showItem" bindtap="clickFn">
+  <slot />
+</view>
+<view class="select" bindtap="closeBox" wx:if="{{isOpen}}">
+  <view class="select_box" catchtap="stop">
+    <view class="select_title">
+      <text catchtap="closeBox">取消</text>
+      <text class="select_title-comfirm" catchtap="confirm">确认</text>
+    </view>
+    <view class="select_search">
+      <view class="searchIpt">
+        <input placeholder-class="placlass" type="text" placeholder="{{placeholder}}搜索" bindinput="iptSearch" value="{{inputVal}}" />
+        <image src="./icon-clear.png" class="select_clear" bindtap="clearIpt"></image>
+      </view>
+      <view class="searchBtn" bindtap="searchFn">
+        <image src="./icon-search.png"></image>
+      </view>
+    </view>
+    <view class="ul">
+      <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" bindchange="bindChange" value="{{currentIndex}}">
+        <picker-view-column>
+          <view wx:for="{{isSearchResult?searchListtData:range}}" wx:key="{{item[rangeValue]}}" style="line-height: 50px; text-align: center;" class="{{index==currentIndex[0]?'li  active':'li '}}" data-item="{{item}}" data-value="{{index}}" bindtap="selectFn"> {{item[rangeKey]}}</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,4 @@
+<!--pages/about/about.wxml-->
+<view style="padding: 20px;">
+  <rich-text space="nbsp" nodes="{{buttomMessage}}"  bindtap="copywxtap"></rich-text>
+</view>

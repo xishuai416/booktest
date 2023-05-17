@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wky.book.mapper.BookUserMapper">
+    <select id="getAuditAll" resultType="com.wky.book.entity.BookUser">
+        SELECT
+        tbu.*,
+        tb.book_name
+        FROM
+        tb_book_user tbu
+        LEFT JOIN tb_book tb ON tb.id = tbu.book_id
+        <where>
+            <if test="bookUserVo.userId!=null">
+                tbu.user_id=#{bookUserVo.userId}
+            </if>
+            <if test="bookUserVo.status!=null">
+                and tbu.status=#{bookUserVo.status}
+            </if>
+            <if test="bookUserVo.bookIds.size()!=0">
+                and tbu.book_id IN
+                <foreach collection="bookUserVo.bookIds" item="bookId" index="index" open="(" close=")" separator=",">
+                    #{bookId}
+                </foreach>
+            </if>
+        </where>
+        order by tbu.update_time desc
+
+    </select>
+</mapper>

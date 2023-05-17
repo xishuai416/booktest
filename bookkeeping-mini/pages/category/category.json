@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "mp-icon":"../../miniprogram_npm/weui-miniprogram/icon/icon"
+  },
+  "navigationBarBackgroundColor": "#FFD700",
+  "navigationBarTitleText": "新增分类",
+  "enablePullDownRefresh":true,
+  "backgroundTextStyle": "dark",
+  "backgroundColor": "#FFD700"
+
+}

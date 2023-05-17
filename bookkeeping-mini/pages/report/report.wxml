@@ -1,0 +1,81 @@
+<!--pages/report.wxml-->
+<view class="app">
+    <view wx:if="{{empty}}">
+        <create-book innerText="{{'暂无图表数据，请选创建账本'}}"></create-book>
+    </view>
+    <!-- <view bindtap="toggle">切换</view> -->
+    <view class="warp" wx:else="">
+        <view class="card">
+            <view class="card-query">
+                <view class="card-query-title">账本：</view>
+                <!-- <button-group style="width:100%" currentId="0" label-key="bookName" dataList="{{bookList}}" bind:btnEvent="btnEvent"></button-group> -->
+                <view style="margin: 20rpx 0;">
+                    <picker range="{{bookList}}" range-key="bookName" mode="{{'selector'}}" value="{{queryData.bookId}}" bindchange="bindPickerChange">
+                        <view class="picker">
+                            {{bookList[queryData.bookId].bookName}}<image style="width: 25rpx;height: 25rpx;" src="../../static/img/lower.png"></image>
+                        </view>
+                    </picker>
+                </view>
+
+            </view>
+            <view class="card-query">
+                <view class="card-query-title">类型：</view>
+                <button-group style="width:100%" currentId="0" dataList="{{typeList}}" bind:btnEvent="typeEvent"></button-group>
+            </view>
+            <view class="card-query">
+                <view class="card-query-title" catchtap="">
+                    <picker fields="{{fields}}" mode="{{'date'}}" value="{{queryData.time}}" bindchange="bindDateChange">
+                        <view class="picker">
+                            {{fields=='year'?queryData.yearTimeDesc:queryData.time}}<image style="width: 25rpx;height: 25rpx;" src="../../static/img/lower.png"></image>
+                        </view>
+                    </picker>
+
+                </view>
+                <button-group style="width:100%" currentId="2" dataList="{{btnList}}" bind:btnEvent="timeEvent"></button-group>
+            </view>
+
+        </view>
+        <view class="card">
+            <view class="title">
+                <view class="text">线图统计</view>
+            </view>
+            <view class="content">
+                <canvas class="canvas" canvas-id="lineCanvas"></canvas>
+            </view>
+        </view>
+        <view class="card">
+            <view class="title">
+                <view class="text">饼图统计</view>
+            </view>
+            <view class="content">
+                <canvas class="canvas" canvas-id="pieCanvas"></canvas>
+            </view>
+        </view>
+
+        <view class="card" wx:for="{{listData}}" wx:for-item="book">
+            <view class="title" wx:if="{{book.categories}}">
+                <view class="text">{{book.bookName}}消费排行</view>
+            </view>
+            <view class="content">
+                <!-- <mp-cell value="{{category.name}}" footer="{{category.money}}" wx:for="{{book.categories}}" wx:for-item="category"></mp-cell> -->
+                <mp-cell wx:for="{{book.categories}}" wx:for-item="items" data-value="{{items}}">
+
+                    <progress percent="{{items.rate*100}}" stroke-width="3" />
+                    <!-- 头像 -->
+                    <view slot="icon" style="float: left;margin-left: 20rpx;">
+                        <image catchtap="onPreviewImage" src="{{items.icon}}" class="cell-image"></image>
+                    </view>
+                    <view slot="title" style="display: inline-block;">
+                        <view class="cell-title"> {{items.name}} </view>
+                        <view class="cell-remark"> {{items.rate*100}}%</view>
+                    </view>
+                    <view slot="footer" style="color: black;margin: 0 10px;">
+                        {{items.money}}
+                    </view>
+                </mp-cell>
+
+            </view>
+        </view>
+
+    </view>
+</view>

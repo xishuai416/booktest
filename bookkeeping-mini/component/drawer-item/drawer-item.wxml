@@ -1,0 +1,4 @@
+<!--component/drawer-item/drawer-item.wxml-->
+<view>
+    <slot></slot>
+</view>

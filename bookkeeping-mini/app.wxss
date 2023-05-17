@@ -1,0 +1,41 @@
+
+/* 
+#2DE5F6 蓝色风格
+
+#FFD700 黄色风格
+*/
+/* 
+著名网站使用字体实例：
+
+例1（小米米官网）：font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+
+例2（淘宝技术研发中心）：font: 12px/1.5 Tahoma,Helvetica,Arial,'宋体',sans-serif;
+
+例3（加网 ）： font: 14px/1.5 'Microsoft YaHei',arial,tahoma,\5b8b\4f53,sans-serif;
+
+例4（淘宝UED）： font: 12px/1 Tahoma,Helvetica,Arial,"\5b8b\4f53",sans-serif;
+
+例5（一淘UX）:  font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+*/
+
+@import '/miniprogram_npm/weui-miniprogram/weui-wxss/dist/style/weui.wxss';
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  vertical-align: middle;
+  font-weight: normal
+}
+
+.my-button {
+  background-color: #FFD700;
+  width: 14rem !important;
+  font-size: 14px !important;
+}

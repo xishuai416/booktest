@@ -1,0 +1,9 @@
+<!--pages/index/createBook/createBook.wxml-->
+<view class="create-book">
+  <cover-image class="empty" src="/static/img/empty.png" />
+  <view class="empty-text" wx:if="{{innerText==''}}">您还没有<strong>创建</strong>或者<strong>加入</strong>账本!</view>
+  <view class="empty-text" wx:else>{{innerText}}</view>
+  <button wx:if="{{button!='' }}" size="mini" bindtap="addBook" class="my-button">{{button}}</button>
+  <slot wx:else name="button"></slot>
+
+</view>

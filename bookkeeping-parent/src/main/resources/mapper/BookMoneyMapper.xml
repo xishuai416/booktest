@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wky.book.mapper.BookMoneyMapper">
+
+
+    <!--
+
+     1、因为可以自动手输名称所以tb_book_user的 user_name 有值 user_id 不一定有值，
+      user_name没有值，user_id一定无值
+      -->
+    <select id="listMoney" resultType="com.wky.book.entity.BookMoney">
+        SELECT
+        tbm.id,
+        tbm.book_id,
+        tbm.category_id,
+        tbm.category_name,
+        tbm.user_id,
+        tbm.status,
+        tbm.money,
+        tbm.book_time,
+        tbm.remark,
+        tbm.type,
+        tbm.create_by,
+        tbm.create_time,
+        tbm.update_by,
+        tbm.update_time,
+        IFNULL(tbu.user_name,tbm.user_name) user_name,
+        IFNULL(tbu.avatar_url,tbm.avatar_url) avatar_url
+        FROM
+        tb_book_money tbm
+        LEFT JOIN tb_book_user tbu ON tbm.user_name = tbu.user_name
+        <where>
+            tbm.status='1'
+            <if test="bookMoneyQueryReqVo.bookId!=null and bookMoneyQueryReqVo.bookId!=''">
+               and tbm.book_id=#{bookMoneyQueryReqVo.bookId}
+            </if>
+            <if test="bookMoneyQueryReqVo.startQueryTime!=null  and bookMoneyQueryReqVo.startQueryTime!=''">
+                and tbm.book_time>=#{bookMoneyQueryReqVo.startQueryTime}
+            </if>
+            <if test="bookMoneyQueryReqVo.endQueryTime!=null  and bookMoneyQueryReqVo.endQueryTime!=''">
+                and tbm.book_time&lt;=#{bookMoneyQueryReqVo.endQueryTime}
+            </if>
+            <if test="bookMoneyQueryReqVo.type!=null and bookMoneyQueryReqVo.type!=-1">
+                and tbm.type=#{bookMoneyQueryReqVo.type}
+            </if>
+        </where>
+        group by tbm.id
+        order by tbm.book_time desc
+    </select>
+
+
+    <select id="findUserStatistics" resultType="com.wky.book.response.UserMoneyStatisticsRes">
+        SELECT
+        tbm.user_name,
+        tbm.avatar_url,
+        sum(tbm.money) total_money,
+        tbook.book_name
+        FROM
+        tb_book_money tbm
+        INNER JOIN tb_book tbook ON tbook.id = tbm.book_id
+        <where>
+            tbm.user_name IS NOT NULL and  tbm.status='1'
+            <if test="statistics.bookId!=null">
+                AND tbm.book_id = #{statistics.bookId}
+            </if>
+            <if test="statistics.userName!=null and statistics.userName!=''">
+                AND tbm.user_name = #{statistics.userName}
+            </if>
+            <if test="statistics.type!=null and statistics.type!=-1">
+                AND tbm.type = #{statistics.type}
+            </if>
+        </where>
+        GROUP BY
+        tbm.user_name
+    </select>
+</mapper>

@@ -1,0 +1,44 @@
+<view class="content">
+  <view class="tab">
+    <view class="tabs">
+      新建账本
+    </view>
+    <!-- 表单 -->
+    <form bindsubmit="formSubmit">
+      <view class="from">
+        <view class="list">
+          <view class="item">
+            <view class="item_name">账本名称</view>
+            <input class="item_input" type="text" placeholder="请输入账本名称" name="bookName" />
+          </view>
+        </view>
+        <view class="list">
+          <view class="item">
+            <view class="item_name">是否默认账本</view>
+            <view class="item_switch">
+              <switch name="defaultBook"/>
+            </view>
+          </view>
+        </view>
+
+        <view class="list">
+          <view class="item">
+            <view class="item_name">邀请验证</view>
+            <view class="item_switch">
+              <switch name="userAudit" /><text class="input-waring">注:成员加入需管理员审核</text>
+            </view>
+          </view>
+        </view>
+        <view class="list">
+          <view class="item">
+            <view class="item_name">私密账本</view>
+            <view class="item_switch">
+              <switch name="showSearch" /><text class="input-waring">注:是否为私密账本</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <button class="sure" form-type="submit">新建账本</button>
+    </form>
+  </view>
+</view>

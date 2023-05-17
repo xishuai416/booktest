@@ -1,0 +1,81 @@
+<!-- https://blog.csdn.net/weixin_40677985/article/details/99483365?spm=1001.2101.3001.6650.4&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-4.pc_relevant_paycolumn_v3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-4.pc_relevant_paycolumn_v3&utm_relevant_index=7 -->
+<wxs module="util" src="../../utils/moneyUtil.wxs"></wxs>
+<view>
+  <view class="top">
+    <view class="center">
+      <view class="center_top">
+        <view class="center_img" catchtap="onPreviewImage" data-url="{{item.avatarUrl}}">
+          <image wx:if="{{userInfo.avatarUrl!=''&&userInfo.avatarUrl!=null}}" src="{{userInfo.avatarUrl}}"></image>
+          <image bindtap="login" wx:else src="/static/img/user.gif"></image>
+          <!-- <open-data type="userAvatarUrl" class="user_head"></open-data> -->
+        </view>
+        <view class="center_info">
+          <view wx:if="{{userInfo.nickName!=''&&userInfo.nickName!=null}}" class="center_name">{{userInfo.nickName}}</view>
+          <view wx:else bindtap="login" class="center_name">请登录</view>
+          <!-- <view class="center_phone">phone:{{phone}}</view> -->
+          <view class="center_phone">基本信息</view>
+        </view>
+      </view>
+      <view class="center_down">
+        <view class="center_rank">
+          <image class="rank_icon" src="/static/img/icons2.png"></image>
+          <!-- <icon type="success"/> -->
+          <text class="rank_text">￥{{util.moneyFormat(moneyCount.income)}}</text>
+        </view>
+        <view class="center_score">
+          <image class="rank_icon" src="/static/img/icons3.png"></image>
+          <!-- <icon type="success"/> -->
+          <text class="rank_text">￥{{util.moneyFormat(moneyCount.expenditure)}}</text>
+        </view>
+      </view>
+    </view>
+    <image src='http://docfile.funkingka.cn/FqzmiFqvXbHg-cfbquNRlawHUgHt' mode='scaleToFill' class='gif-wave'></image>
+  </view>
+
+  <van-cell-group title="账本管理">
+    <van-cell title="我的待审" bindtap="myAudit">
+      <mp-badge content="{{badge}}" wx:if="{{badge&&badge!=0}}"></mp-badge>
+      <mp-icon type="outline" icon="arrow" color="gray" size="{{10}}"></mp-icon>
+    </van-cell>
+    <van-cell title="我的申请" bindtap="myApply">
+      <mp-icon type="outline" icon="arrow" color="gray" size="{{10}}"></mp-icon>
+    </van-cell>
+  </van-cell-group>
+  <van-cell-group title="导出管理">
+    <van-cell title="账本统计">
+      <picker class="picker" bindchange="selectBookStatisticsReport" range-key="name" value="{{index}}" range="{{array}}">
+        <mp-icon type="outline" icon="arrow" color="gray" size="{{10}}"></mp-icon>
+      </picker>
+    </van-cell>
+    <van-cell title="账本明细">
+      <picker class="picker" bindchange="selectDetailStatisticsReport" range-key="name" value="{{index}}" range="{{array}}">
+        <mp-icon type="outline" slot="icon" icon="arrow" color="gray" size="{{10}}"></mp-icon>
+      </picker>
+    </van-cell>
+  </van-cell-group>
+  <van-cell-group title="设置管理">
+    <van-cell title="在线联系">
+      <button style="position: absolute;height: 40px; padding: 0; margin: 0;left: 0;border: 0 solid transparent; background: transparent; width: 100% !important;" type="default" open-type="contact" plain="true"></button>
+      <mp-icon type="outline" icon="arrow" color="gray" size="{{10}}"></mp-icon>
+
+    </van-cell>
+    <van-cell title="清除缓存" bindtap="clearStorage">
+      <mp-icon type="outline" icon="arrow" color="gray" size="{{10}}"></mp-icon>
+    </van-cell>
+    <van-cell title="关于我们" bindtap="onAbout">
+      <mp-icon type="outline" icon="arrow" color="gray" size="{{10}}"></mp-icon>
+    </van-cell>
+    <van-cell title="退出登录" bindtap="logout">
+      <mp-icon type="outline" icon="arrow" color="gray" size="{{10}}"></mp-icon>
+    </van-cell>
+  </van-cell-group>
+
+
+  <!-- <van-cell-group title="一起记吧">
+    <van-cell title="邀请好友">
+      <mp-icon type="outline" icon="arrow" color="gray" size="{{10}}"></mp-icon>
+    </van-cell>
+  </van-cell-group> -->
+  <!-- <view bindtap="findBookStatisticsReport">账本统计导出</view> -->
+  <!-- <view bindtap="findDetailedStatisticsReport">用户明细导出</view> -->
+</view>

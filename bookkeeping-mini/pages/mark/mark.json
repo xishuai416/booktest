@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "记一笔",
+  "usingComponents": {
+    "mp-icon":"../../miniprogram_npm/weui-miniprogram/icon/icon",
+    "jz-input":"../../component/jzinput/index",
+    "van-tab": "../../component/dist/tab/index",
+    "van-tabs": "../../component/dist/tabs/index"
+  }
+}

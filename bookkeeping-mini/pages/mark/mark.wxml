@@ -1,0 +1,67 @@
+<!--pages/addrecord/index.wxml-->
+<view class="wrap">
+  <scroll-view class="tabs-wrap" bindtap="onViewCategoryIcon">
+    <van-tabs type="card" animated swipeable active="{{ tabActive }}" bind:change="onTabChange">
+
+      <van-tab title="收入">
+        <view class="info-wrap">
+          <!-- 这里展示选中的分类 -->
+          <view class="info-wrap-left">
+            <image class="category-item-img-select info-icon" mode='widtFix' src="{{srCategoryList[srCategorySelectedIndex].icon}}"></image>
+            <view class="info-category">
+              {{srCategoryList[srCategorySelectedIndex].name}}
+            </view>
+          </view>
+          <view class="info-money">{{money===''?"0.00":money}}</view>
+        </view>
+        <view class='category-wrap'>
+          <view wx:for="{{srCategoryList}}" bindlongpress="onViewCategoryIconSr" class='category-item' data-index='{{index}}' bindtap='categroyItemSelect'>
+            <view wx:if="{{categoryIconSr}}" class="category-icon" data-id='{{item.id}}' catchtap="onRemoveCategory">
+              <image src="../../static/img/close.png" style="width: 30rpx;height: 30rpx;" />
+            </view>
+            <image class="{{srCategorySelectedIndex==index?'category-item-img-select category-item-img':'category-item-img'}}" mode='widtFix' src="{{item.icon}}"></image>
+            <view class='category-item-name'>{{item.name}}</view>
+          </view>
+          <view class='category-item' data-index='0' bindtap='onAddCatrgory'>
+            <image class="'category-item-img'" mode='widtFix' src="https://andwky.top:9000/category/add.png"></image>
+            <view class='category-item-name'>新增分类</view>
+          </view>
+        </view>
+      </van-tab>
+      <van-tab title="支出">
+        <view class="info-wrap">
+          <!-- 这里展示选中的分类 -->
+          <view class="info-wrap-left">
+            <image class="info-icon" mode='widtFix' src="{{zcCategoryList[zcCategorySelectedIndex].icon}}"></image>
+            <view class="info-category">
+              {{zcCategoryList[zcCategorySelectedIndex].name}}
+            </view>
+          </view>
+          <view class="info-money">{{money===''?"0.00":money}}</view>
+        </view>
+        <view class='category-wrap'>
+          <view wx:for="{{zcCategoryList}}" bindlongpress="onViewCategoryIconZc" class='category-item' data-index='{{index}}' bindtap='categroyItemSelect'>
+            <view wx:if="{{categoryIconZc}}" class="category-icon" data-id='{{item.id}}' catchtap="onRemoveCategory">
+              <image src="../../static/img/close.png" style="width: 30rpx;height: 30rpx;" />
+            </view>
+            <image class="{{zcCategorySelectedIndex==index?'category-item-img-select  category-item-img':'category-item-img'}}" mode='widtFix' src="{{item.icon}}"></image>
+            <view class='category-item-name'>{{item.name}}</view>
+          </view>
+          <view class='category-item' data-index='1' bindtap='onAddCatrgory'>
+            <image class="'category-item-img'" mode='widtFix' src="https://andwky.top:9000/category/add.png"></image>
+            <view class='category-item-name'>新增分类</view>
+          </view>
+        </view>
+      </van-tab>
+    </van-tabs>
+
+  </scroll-view>
+  <view class="text-flex-end">
+    <view class="save-money" bindtap="onMoneyDetail">
+      <!-- https://wechat-miniprogram.github.io/weui/docs/icon.html#%E4%BB%A3%E7%A0%81%E5%BC%95%E5%85%A5 -->
+      <mp-icon type="outline" icon="pencil" color="black" size="{{15}}"></mp-icon> 编辑详情
+    </view>
+  </view>
+  <jz-input wx:if="{{userData.length!=0}}" bind:numChange="numChange" initUserInfo="{{initUserInfo}}" initData="{{initData}}" userData='{{userData}}' initDate='{{initDate}}' initRemark='{{remark}}' initValue='{{value}}' bind:submit='submit'>
+  </jz-input>
+</view>

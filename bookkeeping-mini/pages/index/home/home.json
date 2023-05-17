@@ -1,0 +1,12 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mp-cells": "../../../miniprogram_npm/weui-miniprogram/cells/cells",
+    "mp-cell": "../../../miniprogram_npm/weui-miniprogram/cell/cell",
+    "mp-slideview": "../../../miniprogram_npm/weui-miniprogram/slideview/slideview",
+    "selector": "/component/selector/selector",
+    "mp-icon":"../../../miniprogram_npm/weui-miniprogram/icon/icon",
+    "notice": "/component/notice/notice"
+  },
+  "enablePullDownRefresh":true
+}

@@ -1,0 +1,26 @@
+<!--index.wxml-->
+
+<view class="container">
+  <!-- <scroll-view scroll-y style="width: 100%;height: 100%; " refresher-enabled="{{true}}" refresher-threshold="{{100}}" refresher-default-style="white" refresher-background="lightgreen" refresher-triggered="{{triggered}}" bindrefresherpulling="onPulling" bindscrolltolower="reachbottom" bindrefresherrefresh="onRefresh" bindrefresherrestore="onRestore" bindrefresherabort="onAbort"> -->
+  <view class="head_search">
+    <input class="text_search colorGray" type='text' confirm-type="search" placeholder="请输入账本关键词搜索" placeholder-class="colorGray" bindtap="bindInputSearch"></input>
+    <icon class="icon_search" type='search' size="30" bindtap="bindGoSearch"></icon>
+  </view>
+  <create-book wx:if="{{bookList.length==0}}" button="创建账本"></create-book>
+  <home-book id="homeBook" wx:else inner-text="Some text" bookList="{{bookList}}" bookMoney="{{bookMoney}}" bookId="{{bookId}}" bookName="{{bookName}}" noticeMessage="{{noticeMessage}}" buttomEmpty="{{buttomEmpty}}" buttomMessage="{{buttomMessage}}" exSum="{{exSum}}" enterSum="{{enterSum}}" bind:init="init" bind:childrenFindList="childrenFindList" selectIncome="{{selectIncome}}" selectExpenditure="{{selectExpenditure}}" bind:onMoneyQueryFilterView="onMoneyQueryFilterView" bind:setQueryData="setQueryData" bind:childrenToggleBook="childrenToggleBook"></home-book>
+  
+  <!-- </scroll-view> -->
+  <!-- 记一笔 -->
+  <view class="save-money" bindtap="tapMark" wx:if="{{bookList.length!=0}}">
+    <!-- https://wechat-miniprogram.github.io/weui/docs/icon.html#%E4%BB%A3%E7%A0%81%E5%BC%95%E5%85%A5 -->
+    <mp-icon type="outline" icon="add" color="black" size="{{15}}"></mp-icon>记一笔
+  </view>
+  <mp-half-screen-dialog title="分类查询过滤" bindclose="bindclose" show="{{moneyQueryFilterView}}">
+    <mp-cells slot="desc">
+      <mp-checkbox-group prop="checkbox" multi="{{true}}" bindchange="checkboxChange">
+        <mp-checkbox wx:for="{{categorySelectList}}" wx:key="value" label="{{item.categoryName}}" value="{{item.categoryId}}" checked="{{item.checked}}"></mp-checkbox>
+      </mp-checkbox-group>
+    </mp-cells>
+    <button slot="footer" style="padding: 0;" type="primary" bindtap="open" size="mini" catchtap="bindbuttontap">确认</button>
+  </mp-half-screen-dialog>
+</view>

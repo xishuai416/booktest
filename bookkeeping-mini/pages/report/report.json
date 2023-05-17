@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "button-group": "../../component/button-group/button-group",
+    "mp-cells": "../../miniprogram_npm/weui-miniprogram/cells/cells",
+    "mp-cell": "../../miniprogram_npm/weui-miniprogram/cell/cell"
+  },
+  "navigationBarBackgroundColor": "#FFD700",
+  "navigationBarTitleText": "账本图表"
+}

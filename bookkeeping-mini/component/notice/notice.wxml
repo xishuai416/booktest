@@ -1,0 +1,12 @@
+<!-- 公告 -->
+<view class='adsec'>
+  <icon class='iconfont icongonggao c_main fs_36'></icon>
+  <text class='c_main fs_26'>公告：</text>
+  <swiper class="swiper_container" autoplay="true" circular="true" interval="5000">
+    <block wx:for="{{notice}}" >
+      <swiper-item>
+        <view class="swiper_item" data-url="{{item.url}}" bindtap="navigateToURL">{{item.message}}</view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>

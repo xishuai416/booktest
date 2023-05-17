@@ -1,0 +1,47 @@
+function moneyFormat(money) {
+    money = money + ''
+    // 是否是负数
+    var type = money.lastIndexOf("-") != -1;
+    var flag = type ? money.slice(1).length >= 7 : money.length >= 7
+    if (flag) {
+        var moneyObj = null;
+        // {value: '152.87', unit: '万'}
+        if (type) {
+            moneyObj = numberFormat(money.slice(1));
+        } else {
+            moneyObj = numberFormat(money);
+        }
+        var t = moneyObj.value + moneyObj.unit
+        if (type) {
+            t = "-" + t
+        }
+        return t;
+    }
+    return money;
+}
+/**
+ * 超过万就展示单位
+ * 
+ * @param {*} value 
+ * return {value: '1521.45', unit: '万'}
+ */
+function numberFormat(value) {
+    var param = {};
+    var k = 10000,
+        sizes = ['', '万', '亿', '万亿'],
+        i;
+    if (value < k) {
+        param.value = Number(value).toFixed(2)
+        param.unit = ''
+    } else {
+        i = Math.floor(Math.log(value) / Math.log(k));
+        param.value = ((value / Math.pow(k, i))).toFixed(2);
+        param.unit = sizes[i];
+    }
+    return param;
+}
+
+
+module.exports = {
+    moneyFormat: moneyFormat,
+}

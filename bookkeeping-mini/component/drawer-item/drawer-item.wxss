@@ -1,0 +1,45 @@
+/* component/drawer-item/drawer-item.wxss */
+  .top {
+    padding-top: 8px;
+  }
+  .grid {
+    display: -webkit-box;
+    display: box;
+  }
+  
+  .top label {
+    height: 30px;
+    line-height: 30px;
+    width: 160rpx;
+    text-align: center;
+    display: inline-block;
+    font: 300 28rpx/30px "microsoft yahei";
+    -webkit-box-flex: 0;
+    box-flex: 0;
+  }
+  
+  .top input {
+    border: 2rpx solid #ccc;
+    padding-left: 10rpx;
+    margin-right: 50rpx;
+    height: 30px;
+    line-height: 30px;
+    -webkit-box-flex: 1;
+    box-flex: 1;
+  }
+
+  .input_h40 {
+    height: 30px;
+    line-height: 30px;
+  }
+
+  
+  .col-0 {
+    -webkit-box-flex: 0;
+    box-flex: 0;
+  }
+  
+  .col-1 {
+    -webkit-box-flex: 1;
+    box-flex: 1;
+  }

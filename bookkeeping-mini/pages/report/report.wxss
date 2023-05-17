@@ -1,0 +1,145 @@
+/* pages/report.wxss */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.warp {
+    /* background-color: rgb(222, 230, 230); */
+
+    background-color: white;
+    width: 100vw;
+    height: 100vh;
+    /* overflow-x: hidden; */
+    /* overflow-y: auto; */
+    /* position: absolute; */
+    /*避免子元素margin 影响外层元素 overflow和position都可以*/
+    /* display: flex; */
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    /* flex弹性布局 居中（水平、垂直） */
+}
+
+.card {
+    /* width: 98vw; */
+    /* height: 600rpx; */
+    background-color: white;
+    border-radius: 2vh;
+    margin: 1vh;
+    /* 文本垂直居中 */
+    /* text-align: center; */
+    /* line-height: 20vh; */
+    /*外层相对位置*/
+    /* position: relative; */
+    box-shadow: 5px 5px 5px 5px rgb(222, 230, 230);
+    border-radius: 12px;
+    /* color: #ffc0cb; */
+    cursor: pointer;
+    transition: all 1s ease;
+    display: block;
+}
+
+.card .title {
+    /* display: flex; */
+    border-bottom: rgb(235 249 249) 1px solid;
+    width: calc(100% - 2vw);
+    height: 12vw;
+    padding-left: 2vw;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+    
+}
+
+.card .title .text {
+    height: 6vw;
+    /* line-height: 12vw; */
+    border-left: 4px solid #FFD700;
+}
+
+.card .content {
+    position: relative;
+    /* width: 100%; */
+    /* height: 74%; */
+    /* 文本垂直居中 */
+    /* text-align: center; */
+    line-height: 11vh;
+    /* padding-left: 2vw; */
+    /* font-weight: 700; */
+    font-size: 12px;
+}
+
+.card:hover {
+    /* transform: rotateX(0deg) rotateY(0deg) rotate(0deg) translate(15px, 0px);
+    opacity: 0.6; */
+}
+
+.card:hover:after {
+    /* transform: translateX(100%); */
+    /* transition: all 1.5s ease-in-out; */
+}
+
+.card::after {
+    /* content: '';
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-100%);
+    background-image: linear-gradient(60deg, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0) 80%); */
+}
+
+
+.canvas {
+    width: 100%;
+    height: 500rpx;
+    /* margin: 2vh */
+}
+
+
+
+
+.card-query {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: flex-start;
+    /* justify-content: space-between; */
+}
+
+.card-query-title {
+    width: 30%;
+    margin: 20rpx 0rpx 20rpx 20rpx;
+}
+
+
+
+.cell-image {
+    margin-right: 16px;
+    vertical-align: middle;
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+}
+
+.cell-title {
+    display: inline-block;
+}
+
+.weui-cell {
+    padding: 0 !important;
+}
+
+
+
+
+.cell-remark {
+    display: inline-block;
+    font-size: 25rpx;
+    color: gray;
+    /* position: absolute; */
+    margin-left: 20rpx;
+    /* left: 13vh; */
+    /* bottom: 0; */
+}

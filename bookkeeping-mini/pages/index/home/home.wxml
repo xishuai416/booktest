@@ -1,0 +1,121 @@
+<!--pages/index/home/home.wxml-->
+<wxs module="util" src="../../../utils/moneyUtil.wxs"></wxs>
+<view class="parent">
+  <notice wx:if="{{noticeMessage.length!=0}}" notice="{{noticeMessage}}" />
+  <!-- 数据面板 -->
+  <view class="panel" id="panel">
+    <!-- 收入展示 -->
+    <view class="income">{{timeDesc}}收入
+      <view class="income_money">
+        <span style="font-size: 35rpx;">￥</span>
+        {{util.moneyFormat(enterSum)}}
+        <view class="income_money_balance">结余￥{{util.moneyFormat(enterSum-exSum)}}</view>
+      </view>
+    </view>
+    <!-- 支出展示 -->
+    <view class="expenditure">{{timeDesc}}支出 <span style="font-size: 35rpx;">￥</span><span style="font-size: 50rpx;">{{util.moneyFormat(exSum)}}</span></view>
+
+    <!--  切换账本触发 -->
+    <view class="all-serach">
+      <view class="picker" bindtap="bindBookTapp">
+        <!-- {{bookList[bookIndex].bookName}} -->
+        {{bookName}}
+      </view>
+    </view>
+    <!-- 日期搜索选择 -->
+    <view class="panel-data">
+      <view style="float: left;">
+        <picker mode="date" wx:if="{{fields=='year'||fields=='all'}}" fields="year" bindchange="bindYearChange">{{timeDesc}}
+          <icon style="margin-left: 2rpx;" type="waiting" size="12" />
+        </picker>
+        <picker mode="date" wx:if="{{fields=='month'}}" fields="month" bindchange="bindDateChange"> {{timeDesc}}
+          <icon style="margin-left: 2rpx;" type="waiting" size="12" />
+        </picker>
+        <picker mode="date" wx:if="{{fields=='day'}}" fields="day" bindchange="bindDayChange"> {{timeDesc}}
+          <icon style="margin-left: 2rpx;" type="waiting" size="12" />
+        </picker>
+      </view>
+      <view style="float: left;width:80rpx;height: 50rpx;">
+        <selector id="select" options="{{selectData}}" bind:change="chooseList"></selector>
+      </view>
+    </view>
+  </view>
+  <!-- 内容 -->
+  <!-- tab栏 -->
+  <view class="tabs">
+    <view class="tabs-title">
+      <view class="{{query.type==item.index?'tabs-title-label tabs-title-label-weight':'tabs-title-label'}}" id="{{item.index}}" bindtap="onTabCLick" wx:for="{{tabs}}" wx:key="index">{{item.title}}</view>
+      <view class="tabs-title-label tabs-title-label-right">
+        <!-- 分类筛选下拉选 -->
+        <mp-icon type="outline" icon="qr-code" color="black" size="{{22}}" bindtap="onMoneyQueryFilterView" />
+        <!-- <picker mode="selector" bindchange="bindMultiPickerChange" range-key="categoryName" range="{{categorySelectList}}">
+        </picker> -->
+      </view>
+      <view class="tabs-title-label tabs-title-label-right">
+        <view style="font-size: 25rpx;display: inline-block;">支出 {{util.moneyFormat(selectIncome)}} 收入 {{util.moneyFormat(selectExpenditure)}} </view>
+      </view>
+    </view>
+    <block style="height: 100%;" wx:key="title">
+      <!-- 内容 -->
+      <view class="tab-content" slot="tab-content-{{index}}">
+        <mp-cells wx:for="{{bookMoney}}" wx:key="pidx" ext-class="my-cells" title="{{item.bookTimeDesc}}" title-right="{{item.groupByDesc}}">
+          <mp-cell wx:for="{{item.bookList}}" wx:for-item="items" data-moneyid="{{items.id}}" wx:key="idx" data-value="{{items}}" data-statu="open" bindlongpress="longpressMoney" bindtap="editMoney">
+            <!-- 头像 -->
+            <view slot="icon" style="float: left;">
+              <image catchtap="onPreviewImage" data-url="{{items.avatarUrl}}" src="{{items.avatarUrl}}" class="cell-image"></image>
+            </view>
+            <view slot="title" style="display: inline-block;">
+              <view class="cell-title"> {{items.categoryName}}
+                <span style="font-size: 25rpx;color:gray" wx:if="{{items.userName!=null&&items.userName!=''}}"> {{items.userName}}</span>
+                <span style="font-size: 20rpx;color:gray;margin-left: 20rpx;color:#409eff" wx:if="{{items.detailDescFlag=='1'}}" catchtap="onMoneyDetail" data-value="{{items}}">查看详情</span>
+              </view>
+              <view class="cell-remark"> {{items.remark?items.remark:''}}</view>
+            </view>
+            <view slot="footer" style="color: black;">
+              <span wx:if="{{items.type==0}}" style="color: green">＋</span>
+              <span wx:else style="color: red;">－</span>
+              {{util.moneyFormat(items.money)}}
+            </view>
+          </mp-cell>
+        </mp-cells>
+      </view>
+    </block>
+  </view>
+
+
+  <!-- 账本选择弹出组件 -->
+  <page-container show="{{show}}" round="{{round}}" overlay="{{overlay}}" duration="{{duration}}" position="{{position}}" close-on-slide-down="{{false}}" custom-style="{{customStyle}}" overlay-style="{{overlayStyle}}">
+
+    <view wx:if="{{moneyShow}}">
+      <view class="money-common money-delete" bindtap="moneyDelete">删除</view>
+      <view class="money-common money-return" bindtap="moneyDeleteClose">取消</view>
+    </view>
+    <view class="book-popup-page" wx:else>
+      <button bindtap="addBook" style="width: 100% !important;">新建账本</button>
+      <view class="book-popup-for" wx:for="{{bookList}}" wx:key="{{index}}" data-value="{{index}}" bindtap="bindBookChange">
+        <view class="book-name">{{item.bookName}}
+          <span wx:if="{{item.defaultBook==1}}" class="book-tag book-default">
+            默认账本
+          </span>
+          <span wx:if="{{item.id==bookId}}" class="book-tag book-select">
+            当前选择
+          </span>
+        </view>
+        <view class="book-setting" catchtap="onBookSetting" data-value="{{item}}">
+          <mp-icon type="outline" icon="setting" color="black" size="{{20}}" />
+        </view>
+        <view style="float:right;" catchtap>
+          <switch checked="{{item.defaultBook==1}}" data-id="{{item.id}}" bindchange="defaultBookChange" />
+        </view>
+      </view>
+    </view>
+  </page-container>
+
+  <drawers id="drawer" showModalStatus="{{showModalStatus}}"></drawers>
+
+
+  <view style="text-align: center;color:gray;margin-top: 25rpx;opacity: 0.5;" wx:if="{{buttomEmpty}}">我是有底线的~</view>
+  <view style="text-align: center;color:gray;margin-top: 25rpx;opacity: 0.5;">{{buttomMessage}}</view>
+  
+
+</view>

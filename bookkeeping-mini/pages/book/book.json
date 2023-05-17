@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "mp-icon": "../../miniprogram_npm/weui-miniprogram/icon/icon",
+    "drawer": "/component/drawer/drawer",
+    "drawer-item": "/component/drawer-item/drawer-item"
+  },
+  "navigationBarBackgroundColor": "#FFD700",
+  "navigationBarTitleText": "账本管理"
+}

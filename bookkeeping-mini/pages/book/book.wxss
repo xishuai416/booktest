@@ -1,0 +1,248 @@
+/* pages/book/book.wxss */
+.app {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+}
+
+/* 圆角背景 */
+.back-radius {
+  top: 0;
+  height: 6vh;
+  width: 100%;
+  position: absolute;
+  background: #FFD700;
+  margin-top: 0vh;
+  border-radius: 0 0 5px 5px;
+}
+
+/* // 账本信息样式、 */
+.book-info {
+  position: relative;
+  height: 15vh;
+  width: 90%;
+  margin: 0 auto 2vh auto;
+}
+
+/* 账本用户样式 */
+.book-user-info {
+  height: 7vh;
+  padding: 1vh;
+  font-size: 35rpx;
+  width: 90%;
+  margin: 0 auto;
+  line-height: 7vh;
+
+}
+
+/* 用户名称左边那个头像 */
+.book-user-info-image {
+  width: 7vh;
+  height: 7vh;
+  border-radius: 50%;
+  float: left;
+  background-color: #eeeeee;
+}
+
+/* 是否管理员权限（0-否成员，1管理员  2群主创建人） */
+.book-user-info-r {
+  display: inline-block;
+  margin-right: 1vh;
+  font-size: 25rpx;
+  border-radius: 15%;
+  padding: 6rpx;
+  line-height: 10px;
+  margin-left: 10rpx;
+  height: 25rpx;
+}
+
+
+/* 群主 */
+.book-user-info-root {
+  color: #4df147;
+  border: 1rpx solid #4df147;
+}
+
+/* 管理员 */
+.book-user-info-role {
+  color: #FFD700;
+  border: 1rpx solid #FFD700;
+}
+
+
+/* 成员 */
+.book-user-info-user {
+  color: #9feafd;
+  border: 1rpx solid #9feafd;
+}
+
+/*用户姓名  */
+.book-user-info-text {
+  margin-left: 3vh;
+  font-size: 32rpx;
+  float: left;
+}
+
+/* 最右边那个icon图标 */
+.book-user-info-icon {
+  margin-right: 3vh;
+  float: right;
+}
+
+/* 卡片公共样式 */
+.card {
+  margin-top: 2vh;
+  background-color: white;
+  border-radius: 5%;
+  filter: progid:DXImageTransform.Microsoft.Shadow(color=#e6e6e6, direction=120, strength=4);
+  -moz-box-shadow: 2px 2px 10px #e6e6e6;
+  -webkit-box-shadow: 2px 2px 10px #e6e6e6;
+  box-shadow: 2px 2px 10px #e6e6e6;
+}
+
+/* 邀请好友按钮 */
+.book-share {
+  position: fixed;
+  bottom: 0;
+  width: 100% !important;
+}
+
+
+
+
+
+
+
+
+
+/* 弹窗样式 */
+.top {
+  padding-top: 8px;
+}
+
+.grid {
+  display: -webkit-box;
+  display: box;
+}
+
+.top label {
+  height: 30px;
+  line-height: 30px;
+  width: 160rpx;
+  text-align: center;
+  display: inline-block;
+  font: 300 28rpx/30px "microsoft yahei";
+  -webkit-box-flex: 0;
+  box-flex: 0;
+}
+
+.top input {
+  border: 1rpx solid #ccc;
+  padding-left: 10rpx;
+  margin-right: 50rpx;
+  height: 30px;
+  line-height: 30px;
+  -webkit-box-flex: 1;
+  box-flex: 1;
+}
+
+.input_h40 {
+  height: 30px;
+  line-height: 30px;
+}
+
+
+.col-0 {
+  -webkit-box-flex: 0;
+  box-flex: 0;
+}
+
+.col-1 {
+  -webkit-box-flex: 1;
+  box-flex: 1;
+}
+
+/*  多用户 定位头像父div */
+.book-user-images {
+  overflow: hidden;
+  position: absolute;
+  height: 4vh;
+  bottom: 1vh;
+  right: 0;
+  width: 90%;
+}
+
+
+/* 多用户 定位头像公共样式 */
+.book-user-images-url {
+  width: 4vh;
+  height: 4vh;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+}
+
+/* 账本头像 */
+.book-info-avatar image {
+  width: 7vh;
+  margin: 3vh 0vh 0vh 3vh;
+  height: 7vh;
+  float: left;
+  border-radius: 50%;
+}
+
+/* 账本名称 */
+.book-info-name {
+  margin: 3vh 0vh 0vh 3vh;
+  font-size: 35rpx;
+  display: inline-block;
+}
+
+/*  账本信息图标右侧箭头 */
+.book-info-icon {
+  position: absolute;
+  right: 2vh;
+  width: 3vh;
+  text-align: center;
+  height: 6vh;
+  top: 50%;
+  margin-top: -3vh;
+
+}
+
+
+
+/* 底部弹出删除样式 */
+
+.money-common {
+  font-size: 38rpx;
+  height: 10vh;
+  border-bottom: 1px solid #dedede;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 10vh;
+}
+
+
+.money-success {
+  color: green;
+}
+
+.money-delete {
+  color: red;
+}
+
+.money-return {
+  color: color;
+}
+
+/* 提示语 */
+.input-waring {
+  font-size: 25rpx;
+  color: red;
+}
+
+/* 适配底部 */
+.adaptation_buttom {
+  height: 40px;
+}
